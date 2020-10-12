@@ -29,21 +29,6 @@ const main = async () => {
       })
   })
 
-  app.get('/test', async (req, res) => {
-      try{
-        const col = await db();
-        const result = await col.findOne({
-            _id: '10084023',
-        });
-        res.status(200).json(result);
-      } catch (err) {
-          console.log(err.stack);
-          res.status(400).json({
-              err: err.stack,
-          })
-      }
-  })
-
   app.post('/list', async (req, res) => {
     const { startDate, endDate } = req.body;
 
@@ -90,10 +75,28 @@ app.post('/content', async (req, res) => {
           records: [{
               _id: result._id,
               name: result.name,
+			  host: result.host,
               accommodates: result.accommodates,
               bedrooms: result.bedrooms,
               beds: result.beds,
-
+			  bathrooms: result.bathrooms,
+			  amenities: result.amenities,
+			  images: result.images,
+			  address: result.address,
+			  summary: result.summary,
+			  price: result.price,
+			  monthly_price: result.monthly_price,
+			  weekly_price: result.weekly_price,
+			  security_deposit: result.security_deposit,
+			  cleaning_fee: result.cleaning_fee,
+			  review_score: result.review_score,
+			  reviews: result.reviews,
+			  space: result.space,
+			  neighborhood_overview: result.neighborhood_overview,
+			  notes: result.notes,
+			  transit: result.transit,
+			  access: result.access,
+			  interaction: result.interaction,
           }],
       });
     } catch (err) {
